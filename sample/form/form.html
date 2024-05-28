@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+  <head lang="fa">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <style>
+      @font-face {
+        font-family: myFont;
+        src: url("../../styles/font/Yekan.ttf");
+      }
+       *{
+        font-family:myFont;
+        box-sizing : border-box;
+         }
+       body{
+         padding:0px;
+         margin:0px;
+         height:100%;
+         background-image:url("image/pattern.png");
+        }
+       .shape{
+    position: absolute;
+    left: 35%;
+    transform: rotate(353deg);
+    background: white;
+    z-index: -1;
+    width: 30%;
+    height: 91vh;
+    margin: auto;
+    padding: 20px 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    display: none;
+       }
+      .card{
+         background:white;
+           width:90%;
+           height:100vh;
+           margin:auto;
+           padding: 20px 10px;
+           border: 1px solid;
+           border-radius:15px;
+           text-align:right;
+           border: none;
+           box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+           display: flex;
+           flex-direction: column;
+          }
+             .card_text-box{
+              height: 47%;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              }
+             .card_image{
+              width: 50%;
+             text-align: center;
+             margin: auto;
+              }
+              input{
+                padding:15px;
+                border-radius:5px;
+                text-align:right;
+                border: 1px solid lightgray;
+                margin:10px 0;
+              }
+              .email-text-box:focus-visible{
+                border:none;
+              }
+
+               lable{
+                 color:red;
+                 margin:0 0 15px 0;
+                 display:none; 
+                 font-size: .7rem;
+                }
+
+              .submit-fild{
+                 width:20%;
+                 padding:5px;
+                 border-radius:5px;
+                 border:none;
+                 background:#00bffe;
+                 text-align:center;
+                 color:white;
+              }
+              .submit-fild:hover{
+                box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset ;
+              }
+            .card_acceptrules{
+                display:flex;
+                font-size: .5rem;
+                justify-content: flex-end;
+             }
+             .main-page-button{
+              width: 30%;
+              border: none;
+              border-radius: 15px;
+              padding: 5px;
+              background-image: repeating-linear-gradient(34deg, #2ad041, #00d3ff 100px);
+             }
+             .main-page-button:hover{
+              opacity: .7;
+             }
+             .main-page-button:active{
+              transform: scale(.9);
+             }
+
+        @media only screen and (min-width: 700px){
+              .shape{
+                display: block;
+               }
+               .card{
+                width: 400px;
+               }
+             }
+      
+
+    </style>
+  </head>
+  <body>
+   <div class="shape"></div>
+
+   <div class="card">
+    <div style="width: 100%; text-align: left;">
+      <a href="/resome#form" style="text-align: left;display: inline;"><button class="main-page-button">بازگشت</button></a>
+    </div>
+     <div class="card_image">
+       <img src ="image/logo.svg" alt="logo.svg">
+      </div>
+     <div class="card_text-box">
+
+        <input class="email-text-box" id="email" type="mail" name="email" placeholder="ایمیل" onchange="check();" >
+         <lable class="empty-email-box" for="email">لطفا فقط ایمیل صحیح وارد کنید</lable>
+         <lable class="wrong-email-box" for="email">لطفا فقط ایمیل صحیح وارد کنید</lable>
+
+        <input class="password-text-box" type="password" name="password" placeholder="رمز عبور">
+              <lable class="empty-password-box" for="password">لطفا فیلد کلمه عبور را وارد کنید</lable>
+         <lable class="wrong-password-box" for="email">کلمه عبور باید بیشتر از 6 کاراکتر باشد</lable>
+
+
+        <input class="confirm-password-text-box" type="password" name="confirm-password" placeholder="تکرار رمز عبور">
+        <lable class="empty-confirm-password-box" for="confirm-password">لطفا فیلد تکرار کلمه عبور را وارد کنید</lable>
+        <lable class="wrong-confirm-password-box" for="confirm-password">تکرار کلمه عبور باید با کلمه عبور مطابقت داشته باشد</lable>
+
+     </div>
+     <div class="card_acceptrules">
+       <h1>با قوانین موافقم</h1>
+       <input type="checkbox">
+     </div>     
+     <div class="capcha">
+      
+
+ 
+    <div class="inline" onclick="generate()">
+        <i class="fas fa-sync"></i>
+    </div>
+ 
+    <div id="image"
+         class="inline"
+         selectable="False">
+    </div>
+
+ 
+    <p id="key"></p>
+ 
+     </div>
+     <div class="card_submit">
+       <input class="submit-fild" type="submit" value="ثبت نام">
+     </div>
+   </div>   
+
+    <script>
+
+
+
+
+
+
+      let email = document.querySelector(".email-text-box");
+      let password = document.querySelector(".password-text-box");
+      let confirmPassword = document.querySelector(".confirm-password-text-box");
+      let submit = document.querySelector(".submit-fild");
+      let cardTextBox = document.querySelectorAll(".card_text-box");
+
+      let emtyEmail = document.querySelector(".empty-email-box");
+      let emtyPassWord = document.querySelector(".empty-password-box");
+      let emtyconfirmPassWord = document.querySelector(".empty-confirm-password-box");
+     
+      let wrongEmail = document.querySelector(".wron-email-box");
+      let wrongPassWord = document.querySelector(".wrong-password-box");
+      let wrongconfirmPassWord = document.querySelector(".wrong-confirm-password-box");
+
+       
+       submit.addEventListener('click', function(){
+
+           if(email.value == ""){
+                   emtyEmail.style.display = "block";
+             }else{
+                   emtyEmail.style.display = "none";
+             }
+
+           if(password.value == ""){
+                  emtyPassWord.style.display = "block";
+             }else if(password.value.length < 6){
+                  emtyPassWord.style.display = "none";
+                  wrongPassWord.style.display = "block";
+               }else{
+                  emtyPassWord.style.display = "none";
+               wrongPassWord.style.display = "none";
+               }
+
+           if(confirmPassword.value == ""){
+                  emtyconfirmPassWord.style.display = "block";
+             }else if(confirmPassword.value == password.value){
+                  emtyconfirmPassWord.style.display = "none";
+                  wrongconfirmPassWord.style.display = "none";
+                }else{
+                  emtyconfirmPassWord.style.display = "none";
+                  wrongconfirmPassWord.style.display = "block";
+               }
+       })    
+
+ function check() {
+email = document.getElementById("email");
+filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+if (filter.test(email.value)) 
+    {
+    document.getElementById("email").style.border = "1px solid green";  
+    return true;
+    }else{
+    document.getElementById("email").style.border = "1px solid red";
+    return false;
+    }
+}
+    </script>
+  </body>
+</html>
+
+
+
+
+
+

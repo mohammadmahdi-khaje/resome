@@ -1,0 +1,161 @@
+<!DOCTYOE html>
+<html lang="fa">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      @font-face {
+        font-family: myFont;
+        src: url(../../styles/font/Yekan.ttf);
+      }
+      *{
+        font-family: myFont;
+        box-sizing: border-box;
+      }
+      body{
+
+background: #303030;
+      }
+      .main-page{
+      padding: 10px 25px;
+      background-attachment: fixed;
+      background: black;
+      border: none;
+      border-radius: 15px;
+      font-size: 1rem;
+      font-weight: bold;
+      box-shadow: 0 0 15px  black;
+      z-index: 1;
+      margin: 10px;
+    }
+    .main-page:hover{
+      cursor: pointer;
+    }
+    .main-page:active{
+      opacity: .8;
+    }
+     #calculator{
+      padding:5px;
+      width:340px;
+      height:500px;
+      background: rgb(0, 0, 0);
+      border-radius: 15px;
+      position: absolute;
+      top:50%;
+      left:50%;
+      transform: translate(-50%, -50%);
+      padding: 10px;
+      box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    }
+    #textBox{
+     width: 100%;
+     border: none;
+     height: 10%;
+     background: black;
+     color:white;
+     font-size: 4rem;
+     margin: 10px 0;
+    }
+    #textBox:focus-visible{
+      outline: none;
+    }
+    #key{
+      width:100%;
+      text-align:center;
+      height:100%;
+
+    }
+    .calculator-button{
+      color: wheat;
+      background: rgb(255, 182, 47);
+    }
+    .calculator-button-clear{
+      background: rgb(255, 182, 47);
+      width: 93%;
+      border-radius: 15px;
+    }
+    button{
+     color:white; 
+     background:rgb(56, 56, 56);
+     margin:4px;
+     width:21%;
+     height:15%;
+     border-radius: 50%;
+     font-size: x-large;
+     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+     font-size: xxx-large;
+   }
+    button:active{
+     transform: scale(.9);
+    }
+
+    @media only screen and (min-width: 700px) { 
+      #calculator{
+        width: 400px;
+        height: 500px;
+      }
+      button{
+        width: 18%;
+      }
+    }
+    </style>
+  </head>
+  <body> 
+   
+    <a href="/resome#calculator"><input class="main-page" type="button" value="بازگشت" style="color: white;"></a>
+
+
+<div id="calculator" type="number">
+  <div id="key">
+    <div>
+      <input id="textBox" onload="keydown(event)" autofocus>
+    </div>
+    <div>
+      <button class="calculator-button" onclick="appendDisplay('+')"  onkeydown="function(e)">+</button>
+      <button onclick="appendDisplay('7')"  onkeydown="function(e)">7</button>
+      <button onclick="appendDisplay('8')"  onkeydown="function(e)">8</button>
+      <button onclick="appendDisplay('9')"  onkeydown="function(e)">9</button>
+      <button class="calculator-button" onclick="appendDisplay('-')"  onkeydown="function(e)">-</button>
+      <button onclick="appendDisplay('4')"  onkeydown="function(e)">4</button>
+      <button onclick="appendDisplay('5')"  onkeydown="function(e)">5</button>
+      <button onclick="appendDisplay('6')"  onkeydown="function(e)">6</button>
+      <button class="calculator-button" onclick="appendDisplay('*')"  onkeydown="function(e)">*</button>
+      <button onclick="appendDisplay('1')"  onkeydown="function(e)">1</button>
+      <button onclick="appendDisplay('2')"  onkeydown="function(e)">2</button>
+      <button onclick="appendDisplay('3')"  onkeydown="function(e)">3</button>
+      <button class="calculator-button" onclick="appendDisplay('/')"  onkeydown="function(e)">/</button>
+      <button onclick="appendDisplay('0')"  onkeydown="function(e)">0</button>
+      <button onclick="appendDisplay('.')"  onkeydown="function(e)">.</button>
+      <button class="calculator-button" onclick="calculator()" keypress="calculator()">=</button>
+      <button class="calculator-button-clear" onclick="clearDisplay()" onkeydown="function(e)">پاک کردن</button>
+    </div>
+    
+
+  </div>
+</div>
+<script>
+   "use strict";
+  
+
+
+     let display = document.getElementById("textBox" );
+
+    function appendDisplay(input){
+     display.value += input;
+    
+    } 
+    function clearDisplay(){
+     display.value = "";
+    }
+    function calculator(){
+   display.value = eval(display.value);
+    }
+     document.addEventListener("keydown", function(event){
+       if(event.key == "Enter"){
+        calculator()
+       }
+     })
+</script>
+  </body>
+</html>
+

@@ -1,0 +1,30 @@
+ @mixin button{
+  background: var(--button-color);
+  color:white;
+  width: 10em;
+  height:3em;
+  border-radius: 100px;
+  border:none;
+}
+
+@mixin menu-ul{
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+  width: 100%;
+  text-align: center;
+}
+
+@mixin menu-li{
+   width:33%; 
+   background:transparent;
+   font-size:.8em;
+   padding:10px;
+   height:auto;
+}
+@mixin menu-li-hover{
+   color:var(--main-color);
+   background:#F2F6F4;
+   border:1px solid var(--main-color);
+   border-radius:50px;
+}

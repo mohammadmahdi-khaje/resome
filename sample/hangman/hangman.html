@@ -1,0 +1,312 @@
+<html lang="en">
+<head>
+  <title>بازی hangman</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+<style>
+  @font-face {
+    font-family: myFont;
+    src: url(../../styles/font/Yekan.ttf);
+  }
+    *{
+        font-family:myFont;
+    }
+    body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+     }
+     .main{
+      width: 350px;
+      height: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 14px black;
+        background: white;
+       border-radius: 15px;
+       background-image: url("../form/image/pattern.png");
+
+     }
+  .container{
+    width: 400px;
+    height: auto;
+    border-radius: 15px;
+    padding: 0;
+    text-align: center;
+    display:flex;
+    align-items:center;
+    flex-direction: column;
+  }
+  .word-display{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 3rem 0;
+  }
+  .letter{
+    border-bottom: 1px solid black;
+    width: 10%;
+    list-style-type: none;
+    text-transform: uppercase;
+    font-size: x-large;
+    font-weight: bold;
+  }
+  .keyboard{
+    text-align: center;
+    width: 80%;
+    margin: auto;
+  }
+  button{
+    text-align: center;
+    margin: 1px;
+    color: white;
+    background-color: rebeccapurple;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+   button:hover{
+    opacity: 0.5;
+  }
+  .keyboard button[disabled]{
+    opacity: 0.5;
+    pointer-events:none;
+  }
+  .hangman-box{
+    width: 50%;
+    height: 50%;
+  }
+  .hangman-image{
+width: 100%;
+height: 100%;
+    border-radius: 17px;
+  }
+  .allert-sad {
+    background: rebeccapurple;
+    position: absolute;
+    width: 45%;
+    height: 300px;
+    border-radius: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);  
+    display: none;
+    z-index: 1;
+    border-radius: 15px;
+    padding: 15px;
+  }
+  .allert-happy {
+    background: rebeccapurple;
+    position: absolute;
+    width: 50%;
+    height: 350px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);  
+    display: none;
+    z-index: 1;
+  }
+  .allert_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    height: fit-content;
+    align-items: center;
+    border-radius: 15px;
+    color: white;
+}
+  .allert_button{
+    width:200px;
+    height: auto;
+    border-radius: 10px;
+    background: white;
+    border: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+   }
+   .allert_button:hover{
+    box-shadow: 0 0 29px -10px black;
+    opacity: .8;
+   }
+   .allert_button:active{
+      transform: scale(.9);
+   }
+   .Emoji{
+    width: 130px;
+    height: 130px;
+   }
+   .main-page-button{
+              width: fit-content;
+              border: none;
+              border-radius: 15px;
+              padding: 10px;
+              display: inline;
+             }
+             .main-page-button:hover{
+              opacity: .7;
+             }
+             .main-page-button:active{
+              transform: scale(.9);
+             }
+   @media only screen and (min-width: 700px){
+    body{
+      background-image: url("../form/image/pattern.png");
+    }
+    .main{
+      width: fit-content;
+      padding: 10px;
+      background-image:none;
+    }
+    .container{
+      width:500px;
+      display: flex;
+      flex-direction: row;
+      height: fit-content;
+      height: 80vh;
+    }
+    .hangman-image{
+      width: fit-content;
+    }
+    .allert-sad{
+      width: 35%;
+    }
+   }
+</style>
+</head>
+<body>
+<div class="main">
+  <div style="width: 100%; text-align: left; display: flex; align-items: center; justify-content: space-around;">
+    <a href="/resome#hangman" style="text-align: left;display: inline;"><button class="main-page-button">بازگشت</button></a>
+    <h1>بازی هنگ من</h1>
+  </div>
+    <div class="container">
+      <div class="hangman-box">
+        <img class="hangman-image" src="images/pic1.png" alt="hangman-image">
+      </div>
+      <div>
+        <div class="game-box">
+            <ul class="word-display">
+            </ul>
+        </div>
+         <div class="allert-sad">
+           <div class="allert_container">
+             <img  class="Emoji" src="images/Sad Emoji.png" alt="Sad Emoji.png">
+             <h1>GAME OVERE</h1>
+             <input class="allert_button" type="button" value="دوباره">
+           </div>   
+         </div>
+
+         <div class="allert-happy">
+          <div class="allert_container">
+            <img  class="Emoji" src="images/Happy Emoji.png" alt="happy Emoji.png">
+            <input class="allert_button" type="button" value="دوباره">
+          </div>
+        </div>
+
+        <div class="keyboard"></div>
+        <div class="gusse-count">
+          <h1>0/6</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+    <script>
+ const api = async () => {  
+     const wordlist = await fetch('https://random-word-api.herokuapp.com/word?length=4')
+     const respons = await wordlist.json()
+     return respons;
+}
+        let container = document.querySelector(".container");
+        let wordDisplay = document.querySelector(".word-display");
+        let keyboardDiv = document.querySelector(".keyboard");
+        let gussedText = document.querySelector(".gusse-count h1");
+        let currentWord, currectLetter = [], worngGusse = 0;
+        let maxGusse = 6;
+        let image = document.querySelector(".hangman-image")
+        let letter = document.querySelector(".letter")
+        let allertSad = document.querySelector(".allert-sad");
+        let allertHappy = document.querySelector(".allert-happy");
+        let alertButton = document.querySelector(".allert-button");
+        let allertButton = document.querySelector(".allert_button") 
+//انتخواب کلمه رندوم
+let getRandomWord = async() =>{
+     const words = await api();
+     currentWord = words[0];
+     console.log(words)     
+     wordDisplay.innerHTML = words[0].split("").map(() => '<li class="letter"></li>').join("");
+ }
+
+ const gameOver = (victory) =>{
+  setTimeout(() => {
+    const modalText = victory ? allertHappy.style.display="block" : "lose";
+    
+  }, 300)
+ }
+
+        let initGame = (button, clickedletter) => {
+          if(currentWord.includes(clickedletter)){
+                      [...currentWord].forEach((letter, index) => {
+              if(letter === clickedletter){
+
+                currectLetter.push(letter)
+                wordDisplay.querySelectorAll("li")[index].innerText = letter;
+              }
+            })
+
+          }else{
+            worngGusse++;
+            image.src =`images/pic${worngGusse}.png`;
+          }
+          button.disabled = true;
+          gussedText.innerText = `${worngGusse} / ${maxGusse}`;
+
+          if(worngGusse == 6){  
+               allertSad.style.display = "block"
+               keyboardDiv.style.filter =" blur(3px)";
+               keyboardDiv.style.transition =".5 all";
+               image.style.filter =" blur(3px)";
+               allertButton.addEventListener("click", function(){
+               location.reload();
+
+               if(worngGusse === maxGusse) return gameOver(false)
+               if(currectLetter.length === currentWord.length) return gameOver(true)
+
+             })
+          }
+}
+
+
+        //ساخت کیبورد 
+       for(let i = 97;i <= 122; i++){
+         var button = document.createElement("button");
+         button.innerText = String.fromCharCode(i);
+         keyboardDiv.appendChild(button);
+         button.addEventListener("click", e => initGame(e.target,  String.fromCharCode(i)));
+        //  document.addEventListener("keydown", e=> {
+        //   console.log(e.key)
+        //   for(let i = 97; i <= 122; i++){
+        //    initGame(e.target);
+        //   }
+        // })
+
+       }
+       getRandomWord();
+      
+    </script>
+</body>
+</html>
+
+
+       

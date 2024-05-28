@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>guess</title>
+    <style>
+          @font-face {
+    font-family: myFont;
+    src: url(../../styles/font/Yekan.ttf);
+  }
+        *{
+          font-family:myFont;
+          font-size: 1.2rem;
+         }
+         body{
+            background: rgb(178, 46, 204);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 15px;
+         }
+        #container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 400px;
+            height:fit-content;
+            border-radius: 15px;
+            text-align: center;
+            background: rgb(255, 255, 255);
+            box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+        }
+        .main{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            transition: all 1s;
+        }
+        
+        #number {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin:20px 0;
+        }
+        
+        #hidden-number {
+            padding: 15px;
+            text-align: center;
+            color:green;
+        }
+        
+        #guess-input {
+            width: 100px;
+            padding: 5px;
+            margin-top: 10px;
+            border-radius:15px;
+            border:1px solid black;
+            text-align: center;
+        }
+        
+        #submit-button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius:15px;
+            border:1px solid black;
+         }
+         #submit-button:active{
+           transform: scale(.9);
+         }
+        #message {
+            margin-top: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        .main-page-button{
+              width: 25%;
+              border: none;
+              border-radius: 15px;
+              padding: 5px;
+             background: #b22ecc;
+             color: white;
+             }
+             .main-page-button:hover{
+              opacity: .7;
+             }
+             .main-page-button:active{
+              transform: scale(.9);
+             }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div style="width: 100%; text-align: left;">
+            <a href="/resome#reandom-number" style="text-align: left;display: inline;"><button class="main-page-button">بازگشت</button></a>
+          </div>
+      <div class="main">
+        <h1>بازی حدس عدد</h1>
+        <p>یک عدد بین  1 تا 10 حدس بزنید</p>
+        <div id="number">
+          <span id="hidden-number">???</span>
+        </div>
+        <input id="guess-input" type="number" min="1" max="10">
+        <button id="submit-button">حدس بزن</button>
+        <p id="message"></p>
+      </dvi>
+    </div>
+    
+    <script>
+
+        let number = Math.floor(Math.random() * 10) + 1;
+        
+        let hiddenNumberElement = document.getElementById("hidden-number");
+        let guessInputElement = document.getElementById("guess-input");
+        let submitButtonElement = document.getElementById("submit-button");
+        let messageElement = document.getElementById("message");
+        
+        function showMessage(message) {
+            messageElement.textContent = message;
+        }
+        
+        function check() { 
+          let guess = parseInt(guessInputElement.value);
+
+           if(guess === number) {
+                hiddenNumberElement.textContent = number;
+                showMessage("جواب شما درست بود");
+                submitButtonElement.disabled = true;
+                messageElement.style.color="green" ;
+                hiddenNumberElement.style.border = "3px solid green";
+            }else{
+                 
+                showMessage("جواب شما اشتباه بود" );
+                messageElement.style.color="red";
+                hiddenNumberElement.style.border = "3px solid red";
+               
+            }
+
+        }
+
+
+        guessInputElement.addEventListener("keypress", function(e){
+            if(e.key == "Enter"){
+                check()
+            }
+        })
+
+       
+      
+
+        window.onload = function() {
+            guessInputElement.focus();
+        };
+
+        
+        submitButtonElement.addEventListener("click", check);
+    </script>
+</body>
+</html>

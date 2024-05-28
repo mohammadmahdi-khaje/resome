@@ -1,0 +1,82 @@
+@mixin magic-border($width, $color, $duration, $direction){
+    position:relative;
+      &:before{
+        content:'';
+        position:absolute;
+        width:calc(100% + #{$width * 2});
+        height:calc(100% + #{$width * 2});
+        top:calc(#{$width}/-1);
+        left:calc(#{$width}/-1);
+        background:linear-gradient(to right, $color 0%, $color 100%), linear-gradient(to top, $color 50%, transparent 50%), linear-gradient(to top, $color 50%, transparent 50%), linear-gradient(to right, $color 0%, $color 100%), linear-gradient(to left, $color 0%, $color 100%);
+        background-size:100% $width, $width 200%, $width 200%, 0% $width, 0% $width;
+        background-position:0 100%, -41% 0%, -1px -11%, -17% -23%, -11% -11%;
+        background-repeat:no-repeat, no-repeat;
+        transition:transform $duration ease-in-out, background-position $duration ease-in-out, background-size $duration ease-in-out;
+        transform:scaleX(0) rotate(9deg * $direction);
+        transition-delay:$duration*2, $duration, 0s;
+      }
+      &:hover{
+        &:before{
+          background-size:200% $width, $width 400%, $width 400%, 55% $width, 55% $width;
+          background-position:0 100%, -41% 0%, -1px -11%, -17% -23%, -11% -11%;
+          transform:scaleX(1) rotate(180deg * $direction);
+          transition-delay:0s, $duration, $duration*2;
+        }
+      }
+  }
+
+
+
+.tittle{    
+    margin:20px 0;
+    font-size: xx-large;
+    font-weight: bold;
+    text-align: center;
+    margin: auto;
+    width: fit-content;
+    padding:5px;
+    transition: .2s all;
+    @include magic-border(3px, blue, 0.3s, 0);
+}
+
+hr{
+    width: 30px;
+    background: #106bf0;
+    padding: 3px;
+    border: none;
+    margin: none;
+}
+#move-up-button{
+    width: 50px;
+    height:50px;
+    color: white;
+    background: #106bf0;
+    position: fixed;
+    top: 90%;
+    left: 85%;
+    border-radius:50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+    z-index: 99;
+    box-shadow: 0 1px 10px #106bf0;
+}
+#move-up-button a{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+#move-up-button:hover{
+    opacity: .9;
+}
+#move-up-button:active{
+    transform: scale(.9);
+}
+@media only screen and (min-width: 700px){
+    #move-up-button{
+        top: 90%;
+        left: 95%;
+        box-shadow: 0 0 15px  -4px blue;
+    }
+}

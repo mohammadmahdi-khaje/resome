@@ -1,0 +1,65 @@
+  .main-container__rewards{
+    display: flex;
+    justify-content: space-between;
+    padding: 5%;
+    background: var(--container-color);
+    flex-direction: column;
+
+     .main-container__reward-item{
+       display: flex;
+       align-items: center;
+      margin: auto;
+      padding: 30px 0;
+          }
+   
+
+.main-container{
+  display:flex;   
+
+ .main-container__content{
+    width:100%;
+  }
+  .main-container__filters{
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+   }
+   .main-container__filters-button{
+     @include button;
+     background:white;
+     color:black;
+     border:1px solid gray;
+   }
+
+  .main-container__top-sell-container{
+    display:flex;
+   .main-container__top-sell-content{
+      width:33%;
+    }
+   .main-container__top-sell-image{
+     padding:5% 0;
+     width: 33%;
+    }
+   .main-container__top-sell-product-info{
+      text-align: center;
+      line-height: 25px;
+    }
+   
+  }
+ }
+ @media only screen and (min-width: 700px){
+  .main-container__rewards{
+    display: flex;
+    justify-content: space-between;
+    padding: 5%;
+    background: var(--container-color);
+    flex-direction:row;
+  }
+.main-container__content{
+width:70%;
+}
+.main-container__filters-button{
+   display:none;
+}
+}
+}

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style> 
+   
+   @font-face {
+    font-family: myFont;
+    src: url(../../styles/font/Yekan.ttf);
+   }
+   *{
+    font-family: myFont;
+    box-sizing: border-box;
+    margin: 0;
+   }
+   body{
+    background-image: url("../form/image/pattern.png");
+  }
+   .container{
+    position: relative;
+    width: 100%;
+    margin: auto;
+    height: 100vh;
+    box-shadow: 0 0 25px -10px black;
+    background: white;
+    background-image: url("../form/image/pattern.png");
+   }
+    .main-page{
+      padding: 10px;
+      background-attachment: fixed;
+      background: #27b4a5;
+      border: none;
+      border-radius: 15px;
+      font-size: 1rem;
+      font-weight: bold;
+      box-shadow: 0 0 15px  black;
+      z-index: 1;
+      margin: 10px;
+    }
+    .main-page:hover{
+      cursor: pointer;
+    }
+    .main-page:active{
+      opacity: .8;
+    }
+
+    .card{
+      margin: auto;
+    width: 75%;
+    height: 60vh;
+    height: fit-content;
+    overflow: hidden;
+    background: linear-gradient(130deg, #00feba, #5b548a);
+    text-align: center;
+    color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 30px black;
+    padding: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+      }
+      .card_search{
+        display: flex;
+        justify-content: space-evenly;
+       } 
+      .card_search_search{
+        width: 60%;
+        border: none;
+        padding: 15px;
+        margin: 10px 0 0 0;
+        border-radius: 15px;
+        font-weight: bold;
+        text-align:right;
+        font-size: 1.2rem;
+        font-family: sans-serif;
+      }
+      .card_btn{
+        border: none;
+        padding: 5px;
+        margin: 10px 0 0 0;
+        border-radius: 50px;
+        background:transparent;
+filter: drop-shadow(2px 4px 6px black);    
+        }
+        .card_btn:active{
+          transform: scale(.9);
+        }
+      .weather-imag{
+          width:50%;
+          margin:20px 0 0 0;
+    filter: drop-shadow(2px 4px 16px black);
+       }
+       .card_wind{
+         display: flex;
+         justify-content: space-around;
+         margin:20px 0;
+        }
+        .card_weather{
+          height: 0;
+          transition:all 1s;
+        }
+        @media only screen and (min-width: 700px){
+          .container{
+            position: relative;
+            width: 70%;
+            margin: auto;
+            height: 100vh;
+            box-shadow: 0 0 25px -10px black;
+            border-radius: 15px;
+            background-image: none;
+        }
+        .card{
+          width: 400px;
+        }
+        }
+    </style>
+</head>
+<body>
+
+     <div class="container">
+      <a href="/resome#weather"><button class="main-page">بازگشت</button></a>
+         <div class="card">
+           <div class="card_search">
+             <input class="card_search_search" type="text" placeholder="شهر را به لاتین وارد کنید">
+              <button class="card_btn">
+               <div class="search-img">
+                <img src="images/pattern1.png">
+               </div>
+             </button>
+           </div>
+           <div class="card_weather">
+             <img src="" alt="weather-image" class="weather-imag">
+             <h1 class="temp"></h1>
+             <h5>دمای هوا</h5>
+             <h2 class="city"></h2>
+             <div class="card_wind">
+               <div>
+                 <h1 class="wind-speed"></h1>
+                 <h5>سرعت باد</h5>
+               </div>
+               <div>
+                 <h1 class="humidity"></h1>
+                 <h5>رطوبت</h5>
+               </div>
+             </div>
+           </div>
+         </div>
+      </div>
+
+    <script>   
+  
+  
+   const apiKey = "1195a7c5826f411183b31756240804";
+   const apiUrl = "https://api.weatherapi.com/v1/current.json?key=1195a7c5826f411183b31756240804&q=";
+
+    let citySerch = document.querySelector('.card_search_search')
+    let btnSerch = document.querySelector('.card_search button')
+
+    async function showWeather(cityName){
+      const respons = await fetch(apiUrl + cityName);
+      let data = await respons.json();
+      console.log(data);
+
+      let city = document.querySelector('.city').innerHTML = data.location.name
+      let temp = document.querySelector('.temp').innerHTML = data.current.temp_c + "C"
+      let windSpeed = document.querySelector('.wind-speed').innerHTML = data.current.vis_km +" km/h" 
+      let humidity = document.querySelector('.humidity').innerHTML = data.current.humidity + "%"
+      let weatherIcon = document.querySelector('.weather-imag')
+      let cardDiv = document.querySelector(".card");
+
+     weatherIcon.src="https:" + data.current.condition.icon;
+
+     if(respons.status == 404){
+      alert("error 404")
+     }
+    
+}
+ btnSerch.addEventListener("click", function(){
+      if(citySerch.value == ""){
+        document.querySelector(".card_weather").style.height = "0"
+        document.querySelector(".card_weather").style.transition = "all 1s"
+      }else{
+        document.querySelector(".card_weather").style.height = "100%"
+        document.querySelector(".card_weather").style.transition = "all 1s"
+        showWeather(citySerch.value);
+      }
+        showWeather(citySerch.value);
+      console.log(citySerch.value);
+          
+     });
+
+
+// زمانی که صفحه بارگذاری می شود، روی textbox فوکوس کنید
+window.onload = function() {
+ citySerch.focus();
+};
+
+// با فشار دادن Enter، متنی را از textbox به کنسول ارسال کنید
+citySerch.addEventListener("keypress", function(e){
+            if(e.key == "Enter"){
+              document.querySelector(".card_weather").style.height = "100%"
+        document.querySelector(".card_weather").style.transition = "all 1s"
+        showWeather(citySerch.value);
+            }else{
+              document.querySelector(".card_weather").style.height = "0"
+        document.querySelector(".card_weather").style.transition = "all 1s"
+            }
+            showWeather(citySerch.value);
+      console.log(citySerch.value);
+        })
+
+
+    </script>   
+        </body>
+        </html>
+
+
+  

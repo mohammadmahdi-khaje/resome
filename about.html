@@ -1,0 +1,136 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main-style.css">
+   
+    <title>about</title>
+</head>
+<body>
+        <!------nav------->
+      <section id="menu">
+        <div class="menu_nav-bar" id="menu_nav-bar">
+            <!----nav-links-->
+            <ul class="menu_nav-bar-links">
+                <li><a class="menu_links" href="./index.html">خانه</a></li>
+                <li><a class="menu_links" href="#about-me">درباره من</a></li>
+                <li><a class="menu_links" href= "./index.html">فناوری</a></li>
+                <li><a class="menu_links" href="#footer">تماس با من</a></a></li>
+            </ul>
+          <!--slideshow-nav-->
+          <div id="mySidenav" class="sidenav">
+            <a class="sidenav__links" href="javascript:void(0)"onclick="closeNav()">&times;</a>
+              <a class="sidenav__links" href="./index.html">خانه</a>
+              <a class="sidenav__links" href="./about.html">درباره من</a>
+              <a class="sidenav__links" href="./index.html">فناوری</a>
+              <a class="sidenav__links" href="#footer">تماس با من</a>
+            </div>
+            <span class="sidenav__span" onclick="openNav()">&#9776; </span>
+    </div>  
+        <!----nav-logo--->
+        <div class="menu_logo">
+            <a href="./index.html">
+                <img class="logo" src="images/logo/Screenshot (17).png" alt="sss">
+            </a>
+        </div>
+      </section>    
+
+          <!---about--me-->
+          <section id="about">
+            <h1 class="tittle" style="color: white; margin: 80px auto 20px ;">درباره من</h1>
+
+            <div class="about_container">
+
+               <div class="about_container-text">
+                <p>
+                  من زبان های  html, css, scss, react را از سایت <span style="font-family: sans-serif;">w3school</span> و javascript را از سایت javascript.info  یاد گرفتم .
+                  قبل از اینکه بخواهم برنامه نویسی یاد بگیرم علاقه به یادگیری photoshop داشتم و باشرکت در کلاس های فنی حرفه ای مدرک ان را دریافت کردم.
+                  در نوجوانی به برنامه نویسی و طراحی علاقه داشتم و امروز سعی کرده ام که با کار در زمینه front, ادغامی از ان را در کار خود داشته باشم.
+                  با توجه به روحیه کار تیمی که دارم میتونم در پیش برد هدف های تیم نقش موثری داشته باشم.<br/><br/>
+
+                  مشفق من در یادگیری برنامه نویسی عمویم بود که خود برنامه نویسی ماهر است و برنامه نویسی را هم به من یاد داده است
+                </p>
+                </p>
+               </div>
+
+               <div class="profile">
+                  <div class="profile_card-container">
+                    <!-- profile--card -->
+                    <div class="profile_card">
+                        <div class="profile_card-header">
+                          <div class="profile_image">
+                            <img src="./images/main-image/test.png" alt="image" style="width:63%; height: auto; position: absolute; top: -2px;    filter: drop-shadow(2px 4px 6px black);;">
+                          </div>
+                        </div>
+                        <div class="profile_abute-me">
+                          <h1></h1>
+                          <p style="line-height: 30px;">
+                            من محمدمهدی هستم 18سالمه، یک برنامه‌نویس جونیور با اشتیاق به یادگیری و خلق ایده‌های نوآورانه. من به زبان‌ برنامه‌نویسی javascript , کتابخانه  react , فریم ورکnext و زبان های نشانه گزاری HTML, CSS, SCSS مسلط هستم. علاقه من به برنامه‌نویسی وب و هوش مصنوعی است و مشتاقم از مهارت‌هایم برای ساخت برنامه‌هایه کاربردی استفاده کنم.
+                          </p>
+                        </div>
+                    </div>
+                  </div>
+               </div>
+            </div>
+          </section>
+
+
+       <!---footer-->
+        <footer id="footer">
+        <div class="footer_about">  
+         <div class="footer_cantact">
+           <h1 style="font-size: 1.1rem; width: 100%; text-align: center;">لینک ها</h1>
+            <a  class="contact" href="./sample/calculator/calculator.html"><p>برنامه ماشین حساب</p></a>
+            <a  class="contact" href="./sample/weather/weather.html"><p>برنامه هواشناسی</p></a>
+            <a  class="contact" href="./sample/hangman/hangman.html"><p>بازی hangman</p></a>
+            <a  class="contact" href="./sample/random-number/random-number.html"><p>برنامه حدس عدد شانسی</p></a>
+            <a  class="contact" href="./sample/form/form.html"><p>فرم login</p></a>
+            <a  class="contact" href="./sample/figma-pages/landing-page.html"><p>صفحه فروش محصول</p></a>
+          </div>
+    <div class="footer_contact-contenr">
+
+        <h1 style="font-size: 1rem; width: 100%; text-align: center;">راه های ارتباطی</h1>
+           <h3 class="contact">09031851921</h3>
+           <address  class="contact">sadani1385@gmail.com</address>
+
+     </div>
+   </div>
+ </footer>
+      <script src="particles.js"></script>
+      <script>
+                function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+    
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+
+        let nav = document.querySelector("#menu")
+        let menuLinks = document.querySelectorAll("li a")
+        let moveUpButton = document.querySelector("#move-up-button")
+
+      window.onload = () => {
+          nav.style.filter = "invert(1)"
+          nav.style.background = "transparent"
+          nav.style.border = "none"
+          moveUpButton.style.transition = ".3s all"
+          moveUpButton.style.left = "130%"
+      } 
+
+      window.onscroll = () => {
+        let windowScroll = window.pageYOffset;
+        if(windowScroll > 0){
+          nav.style.background = "white";
+          nav.style.filter = "none";
+          nav.style.border = "none";
+          moveUpButton.style.left = "95%";
+        }else{
+          nav.style.background = "transparent"
+          nav.style.border = "none"
+          nav.style.filter ="invert(1)"
+        }
+      }
+    </script>
+</body>
+</html>

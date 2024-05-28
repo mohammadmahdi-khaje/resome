@@ -1,0 +1,235 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="styles/main-style.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+      <!------nav------->
+      <header id="menu">
+        <div class="menu_nav-bar" id="menu_nav-bar">
+            <!----nav-links-->
+            <ul class="menu_nav-bar-links">
+                <li><a class="menu_links" href="#">خانه</a></li>
+                <li><a class="menu_links" href="./about.html">درباره من</a></li>
+                <li><a class="menu_links" href= "#flip-cards">فناوری</a></li>
+                <li><a class="menu_links" href="#footer">تماس با من</a></a></li>
+            </ul>
+          <!--slideshow-nav-->
+            <div id="mySidenav" class="sidenav">
+                <a class="sidenav__links" href="javascript:void(0)"onclick="closeNav()">&times;</a>
+                  <a class="sidenav__links" href="#">خانه</a>
+                  <a class="sidenav__links" href="./about.html">درباره من</a>
+                  <a class="sidenav__links" href="#flip-cards">فناوری</a>
+                  <a class="sidenav__links" href="#footer">تماس با من</a>
+                </div>
+                <span class="sidenav__span" onclick="openNav()" style="padding: 9px 0 0 0;">&#9776; </span>
+        </div>  
+        <!----nav-logo--->
+        <div class="menu_logo">
+            <a href="#">
+                <img class="logo" src="images/logo/Screenshot (17).png" alt="sss">
+            </a>
+        </div>
+      </header>    
+     <!----main-contant----->
+      <div id="main-contant">
+        <!------tittle------>
+           <div class="main-contant_title">
+            <!---video--> 
+            
+            <video class="main-contant_video" loop autoplay muted id="vid">
+              <source type="video/mp4" src="./images/main-image/globe-video.mp4"></source>
+            </video>
+
+             <h1 class="main-contant_title-text" style="padding:40px;">
+              آینده را با کدنویسی بسازیم
+             </h1>
+           </div>
+ 
+            <h1 class="tittle" data-aos="flip-left">نمونه کار ها</h1>
+
+         <div class="main-contant_card-container">
+          <div id="weather" class="main-contant_card" >
+              <a href="./sample/weather/weather.html"><img class="main-contant_card-image" src="images/upload-image/weather.png" alt="weather"></a>
+           </div>
+
+           <div id="calculator" class="main-contant_card">
+            <a href="./sample/calculator/calculator.html"><img class="main-contant_card-image" src="images/upload-image/Screenshot 2024-04-30 172829.png" alt="weather"></a>
+         </div>
+
+       <div id="form" class="main-contant_card">
+        <a href="./sample/form/form.html"><img class="main-contant_card-image" src="images/upload-image/Screenshot 2024-04-30 190809.png" alt="weather"></a>
+     </div>
+
+     <div id="hangman" class="main-contant_card">
+      <a href="./sample/hangman/hangman.html"><img class="main-contant_card-image" src="images/upload-image/Screenshot 2024-04-30 190911.png" alt="weather"></a>
+   </div>
+
+   <div id="reandom-number" class="main-contant_card">
+    <a href="./sample/random-number/random-number.html"><img class="main-contant_card-image" src="images/upload-image/Screenshot 2024-04-30 191034.png" alt="weather"></a>
+ </div>
+
+ 
+ <div id="figma" class="main-contant_card">
+  <a href="./sample/figma-pages/landing-page.html"><img class="main-contant_card-image" src="images/upload-image/Screenshot 2024-04-30 191246.png" alt="weather"></a>
+</div>
+
+         </div>
+         <!---technology--->
+       
+     <section id="flip-cards">
+      <h1 class="tittle" style="color: white;" data-aos="flip-left">تکنولوژی ها استفاده شده</h1>
+      <div class="flip-cards-container">
+
+         <div class="flip-card " data-aos="fade-up">
+          <div class="flip-card-inner" style="box-shadow: 0 0px 8px 0 #e65100">
+            <div class="flip-card-front">
+              <img class="flip-card_image" src="./images/upload-image/html.png" alt="html">
+            </div>
+            <div class="flip-card-back" style="background-color: orangered;"  data-aos="fade-up">
+              <p class="about-program">زبان نشانه‌گذاری ابرمتنی، (به انگلیسی: Hyper Text Markup Language ) یا زنگام (به انگلیسی: HTML ) در کنار سی‌اس‌اس هستهٔ فناوری ساخت صفحه‌های وب هستند. HTML زبان توصیف ساختار صفحه‌های وب است. زبانی است برای نشانه‌گذاری ابرمتن (فرامتن) که برای تدوین قالب و طراحی صفحه‌های وب به کار می‌برند.</p>
+              <h1>برای نوشتن ساختار سایت از HTML استفاده شده</h1>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" data-aos="fade-up">
+          <div class="flip-card-inner"  style="box-shadow: 0 0px 8px 0 #0277bd">
+            <div class="flip-card-front">
+              <img class="flip-card_image" src="./images/upload-image/css.png" alt="css">
+            </div>
+            <div class="flip-card-back">
+              <p class="about-program">CSS مخفف "Cascading Style Sheets" است. CSS یک زبان کامپیوتری برای چیدمان و ساختار صفحات وب (HTML یا XML) است. این زبان حاوی عناصر کدنویسی است و از این "سبک شیت های آبشاری" تشکیل شده است که به همان اندازه فایل های CSS نامیده می شوند.</p>
+              <h1>برای زیبا کردن بدنه سایت از CSS استفاده شده</h1>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" data-aos="fade-up">
+          <div class="flip-card-inner" style="box-shadow: 0 0px 8px 0 #f06292">
+            <div class="flip-card-front">
+              <img class="flip-card_image" src="./images/upload-image/sass.png" alt="scss">
+            </div>
+            <div class="flip-card-back" style="background-color: #d80194;">
+              <p class="about-program">عبارت SCSS مخفف Sassy Cascading Style Sheets است. این اساساً یک نوع پیشرفته تر و تکامل یافته از زبان CSS است. ناتالی وایزنبام و کریس اپشتاین آن را خلق کردند و همپتون کتلین آن را طراحی کرد. دارای ویژگی های پیشرفته تری است که اغلب به آن Sassy CSS می گویند.</p>
+              <h1>از پیش پردازنده scss و اسم گزاری BEM برای نوشتن css استفاده شده</h1>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" data-aos="fade-up">
+          <div class="flip-card-inner" style="box-shadow: 0 0px 8px 0 #ffd600;">
+            <div class="flip-card-front">
+              <img class="flip-card_image" src="./images/upload-image/javascript.png" alt="javascript">
+            </div>
+            <div class="flip-card-back" style="background-color: #c2ab32;" >
+              <p class="about-program">
+                جاوااسکریپت نوعی زبان سطح بالا، کامپایل درجا و چندالگویی است. جاوااسکریپت نحو آکولادی دارد، نوع‌دهی آن پویا است، نوع شیءگرا‌ی‌اش بر پایه پیش‌نمونه است و دارای توابع کلاس اول است. در ابتدا برندان آیک، سپس مشارکت کننده‌های کلیدی دیگری در مشخصات اکما اسکریپت اضافه شدند. سری جاوااسکریپت است</p>
+              <h1>برای درست کردن slide menu از javascript استفاده شده</h1>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" data-aos="fade-up">
+          <div class="flip-card-inner" style="box-shadow: 0 0px 8px 0 #38bcd2;">
+            <div class="flip-card-front">
+              <img class="flip-card_image" src="./images/upload-image/react.png" alt="react">
+            </div>
+            <div class="flip-card-back" style="background-color: #2196F3;">
+              <p class="about-program">ری‌اکت (به انگلیسی: React )، یک کتابخانه متن‌باز جاوا اسکریپت برای ساخت رابط‌های کاربری و اجزای(Component) صفحات وب است. ری‌اکت در دو نسخه ری‌اکت جی اس (به انگلیسی: React. js ) و ری‌اکت نیتیو (به انگلیسی: React Native ) ارائه شده‌است.</p>
+              <h1>react</h1>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" data-aos="fade-up">
+          <div class="flip-card-inner" style="box-shadow: 0 0px 8px 0 black;">
+            <div class="flip-card-front">
+              <img class="flip-card_image" src="./images/upload-image//nextjs.png" alt="nextjs">
+            </div>
+            <div class="flip-card-back" style="background-color: black;">
+              <p class="about-program">
+                Next. js یک فریم‌ورک رایگان و اوپن‌سورس است که می‌تواند امکانات خوبی را برای کار کردن با کتابخانه‌های ریکت به زبان جاوا اسکریپت در اختیار ما قرار دهد، البته با این تفاوت که بعد از استفاده از ریکت و ایجاد صفحات وب نیتیو، این فریم‌ورک کاری می‌کند که پردازش‌ها در سمت سرور انجام شود و صفحات به صورت استاتیک منتقل شوند.</p>
+              <h1>nextjs</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+     </section>
+         <!---technology--end--->   
+      </div>
+      <!-----move-up-button------>
+      <div id="move-up-button">
+        <a href="#"><img src="./images/main-image/icons8-arrow-up-50.png" style="width:20%; filter:invert(1);"></a>
+      </div>
+      <!---footer-->
+      <footer id="footer">
+        <div class="footer_about">  
+         <div class="footer_cantact">
+           <h1 style="font-size: 1.1rem; width: 100%; text-align: center;">لینک ها</h1>
+            <a  class="contact" href="./sample/calculator/calculator.html"><p>برنامه ماشین حساب</p></a>
+            <a  class="contact" href="./sample/weather/weather.html"><p>برنامه هواشناسی</p></a>
+            <a  class="contact" href="./sample/hangman/hangman.html"><p>بازی hangman</p></a>
+            <a  class="contact" href="./sample/random-number/random-number.html"><p>برنامه حدس عدد شانسی</p></a>
+            <a  class="contact" href="./sample/form/form.html"><p>فرم login</p></a>
+            <a  class="contact" href="./sample/figma-pages/landing-page.html"><p>صفحه فروش محصول</p></a>
+          </div>
+    <div class="footer_contact-contenr">
+
+        <h1 style="font-size: 1rem; width: 100%; text-align: center;">راه های ارتباطی</h1>
+           <h3 class="contact">09031851921</h3>
+           <address  class="contact">sadani1385@gmail.com</address>
+
+     </div>
+   </div>
+ </footer>
+ <script>
+  AOS.init();
+</script>
+      <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+    
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+        let nav = document.querySelector("#menu")
+        let menuLinks = document.querySelectorAll("li a")
+        let moveUpButton = document.querySelector("#move-up-button")
+
+      window.onload = () => {
+          nav.style.filter = "invert(1)"
+          nav.style.background = "transparent"
+          nav.style.border = "none"
+          moveUpButton.style.transition = ".3s all"
+          moveUpButton.style.left = "130%"
+      } 
+
+      window.onscroll = () => {
+        let windowScroll = window.pageYOffset;
+        console.log(window.pageYOffset)
+
+        if(windowScroll > 0){
+          nav.style.background = "white";
+          nav.style.filter = "none";
+          nav.style.border = "none";
+          moveUpButton.style.right = "30PX";
+        }else{
+          nav.style.background = "transparent"
+          nav.style.border = "none"
+          moveUpButton.style.left = "130%"
+          nav.style.filter ="invert(1)"
+        }
+      }
+
+    </script>
+</body>
+</html>
